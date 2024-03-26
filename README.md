@@ -29,7 +29,7 @@
 
 ## Формирование отчета AllureReport
 1. Выгрузить папку с результатами проверки allure-results с эмулятора Pixel 7 API 29 через Device Explorer 
-по пути: `/data/data/ru.iteco.fmhandroid/files/allure-results`;
+ путь: `/data/data/ru.iteco.fmhandroid/files/allure-results`;
 2. Скачать Allure отчет в [архиве;](https://github.com/TIgorT/QADiplomMobileApplicationVH/blob/main/allure-results.rar)
 3. Выполнить команду `allure serve` в терминале, находясь на уровень выше allure-results;
-4. Подождать генерации отчета в открывшемся браузере.
+4. Подождать генерации [отчета](https://github.com/TIgorT/QADiplomMobileApplicationVH/blob/main/Allure%20Report.png)  в открывшемся браузере.
