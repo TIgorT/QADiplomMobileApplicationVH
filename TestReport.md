@@ -4,7 +4,7 @@
 - Составлен [План автоматизации](https://github.com/TIgorT/QADiplomMobileApplicationVH/blob/main/Plan.md)
 - Составлен чек-лист предусматривающий 173 проверки.
 - Составлены 173 тест-кейса.
-- Оформленые [Issues](https://github.com/TIgorT/QADiplomMobileApplicationVH/blob/main/allure-results.rar) по найденным дефектам.
+- Оформленые [Issues](https://github.com/TIgorT/QADiplomMobileApplicationVH/issues) по найденным дефектам.
 - Проведено ручное тестирование сервиса.
 - Автоматизированно 140 тест - кейса на эмуляторе  Pixel 7 API 29(Android 10.0),из них успешно пройдено 133 теста (95.00% - успешных тестов)
   ![](https://github.com/TIgorT/QADiplomMobileApplicationVH/blob/main/Allure%20Report.png)

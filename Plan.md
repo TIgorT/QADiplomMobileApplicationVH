@@ -145,8 +145,8 @@
 
 - [Чек-лист;](https://docs.google.com/spreadsheets/d/1KymxkIXm-wzX-Xw5MUVbSpl-9s8YcZPgaE3VCoTWl8M/edit?usp=sharing)
 - [Тест-кейсы;](https://docs.google.com/spreadsheets/d/1Sgf9nE7QEXgshpobzQ0zoPE4z5XnbtrFXjmg9Wx2fi8/edit?usp=sharing)
-- [Баг репорты;]()
-- [Отчёт о тестировании;]()
+- [Баг репорты;](https://github.com/TIgorT/QADiplomMobileApplicationVH/issues)
+- [Отчёт о тестировании;](https://github.com/TIgorT/QADiplomMobileApplicationVH/blob/main/TestReport.md)
 
 ### Перечень и описание возможных рисков при автоматизации:
 
