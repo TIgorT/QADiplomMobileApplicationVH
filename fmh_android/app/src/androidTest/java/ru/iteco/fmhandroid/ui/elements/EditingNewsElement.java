@@ -24,7 +24,7 @@ public class EditingNewsElement {
     public ViewInteraction theOkButton = onView(withText("OK"));
     public ViewInteraction theEditNewsButton = onView(withId(R.id.edit_news_item_image_view));
     public ViewInteraction theDeleteNewsButton = onView(withId(R.id.delete_news_item_image_view));
-    
+
     public DataInteraction theMassageCategoryInTheEditingNews = onData(anything())
             .inAdapterView(childAtPosition(withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
                     0)).atPosition(5);

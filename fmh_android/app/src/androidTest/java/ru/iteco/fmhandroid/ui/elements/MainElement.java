@@ -7,6 +7,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.not;
 
 import static ru.iteco.fmhandroid.ui.data.Utils.childAtPosition;
 
@@ -30,8 +31,14 @@ public class MainElement {
             allOf(withId(R.id.news_item_title_text_view), withText(Data.theNameOfTheNews()),
                     withParent(withParent(withId(R.id.news_item_material_card_view))),
                     isDisplayed()));
+
     public ViewInteraction theContentOfTheNews = onView(
             allOf(withId(R.id.news_item_description_text_view), withText(Data.descriptionOfTheNews()),
-                    withParent(withParent(withId(R.id.news_item_material_card_view)))));
+                    withParent(withParent(withId(R.id.news_item_material_card_view))),
+                    isDisplayed()));
+    public ViewInteraction theContentOfTheNewsHidden = onView(
+            allOf(withId(R.id.news_item_description_text_view), withText(Data.descriptionOfTheNews()),
+                    withParent(withParent(withId(R.id.news_item_material_card_view))),
+                    not(isDisplayed())));
 
 }

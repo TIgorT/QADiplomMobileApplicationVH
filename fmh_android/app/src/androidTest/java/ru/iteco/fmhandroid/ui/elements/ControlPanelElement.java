@@ -44,6 +44,7 @@ public class ControlPanelElement {
                                             0),
                                     14),
                     isDisplayed()));
+
     public ViewInteraction theOkButton = onView(withText("OK"));
 
     public ViewInteraction theCancelButton = onView(withText("CANCEL"));
