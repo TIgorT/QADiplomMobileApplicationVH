@@ -1,8 +1,11 @@
 package ru.iteco.fmhandroid.ui.steps;
 
+import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
@@ -21,6 +24,7 @@ import ru.iteco.fmhandroid.ui.elements.AppBarElement;
 import ru.iteco.fmhandroid.ui.elements.AuthorizationModule;
 import ru.iteco.fmhandroid.ui.elements.ControlPanelElement;
 import ru.iteco.fmhandroid.ui.elements.CreatingNewsElement;
+import ru.iteco.fmhandroid.ui.elements.FilterNewsElement;
 import ru.iteco.fmhandroid.ui.elements.NewsElement;
 
 
@@ -30,6 +34,7 @@ public class CreatingNewsStep {
     static CreatingNewsElement creatingNewsElement = new CreatingNewsElement();
     static ControlPanelElement controlPanelElement = new ControlPanelElement();
     static AuthorizationModule authorizationModule = new AuthorizationModule();
+    static FilterNewsElement filterNewsElement = new FilterNewsElement();
 
 
     public void selectTheAdCategoryFromTheListOfCategories() {
@@ -1501,6 +1506,102 @@ public class CreatingNewsStep {
         Allure.step("Проверка  правильного отображения в поле Description введённого набора цифровых символов");
         // Делаю проверку что Description поле допускает ввод любых цифровых символов;
         creatingNewsElement.descriptionField.check(matches(withText(Data.aSetOfNumbers())));
+    }
+
+    public void creatingANewsItem() {
+        Allure.step("Проверка видимости кнопки Navicon");
+        appBarElement.buttonNavicon.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку Navicon");
+        appBarElement.buttonNavicon.perform(click());
+        Allure.step("Проверка видимости кнопки News");
+        newsElement.theNewsSection.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку News");
+        newsElement.theNewsSection.perform(click());
+        Allure.step("Проверка видимости кнопки с id: edit_news_material_button");
+        newsElement.aPencilShapedButton.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку с id: edit_news_material_button");
+        newsElement.aPencilShapedButton.perform(click());
+        Allure.step("Проверка видимости кнопки с id: add_news_image_view");
+        controlPanelElement.theCreateNewsButton.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку с id: add_news_image_view");
+        controlPanelElement.theCreateNewsButton.perform(click());
+        Allure.step("Проверка видимости поля Category");
+        creatingNewsElement.theCategoryField.check(matches(isDisplayed()));
+        Allure.step("Нажатие на поле Category");
+        creatingNewsElement.theCategoryField.perform(click());
+        Allure.step("Проверка видимости категории объявление");
+        filterNewsElement.theAdCategory.inRoot(RootMatchers.isPlatformPopup()).check(matches(isDisplayed()));
+        Allure.step("Выбор категории объявление");
+        filterNewsElement.theAdCategory.inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        Allure.step("Проверка видимости поля Title");
+        creatingNewsElement.titleField.check(matches(isDisplayed()));
+        Allure.step("Нажатие на поле Title");
+        creatingNewsElement.titleField.perform(click());
+        Allure.step("Очистка поля Title от сообщения");
+        creatingNewsElement.titleField.perform(clearText());
+        Allure.step("Заполнение поля Title");
+        creatingNewsElement.titleField.perform(replaceText(Data.theNameOfTheNews()));
+        Allure.step("Проверка сообщения в поле Title");
+        creatingNewsElement.titleField.check(matches(withText(Data.theNameOfTheNews())));
+        Allure.step("Проверка видимости поля Publication date");
+        creatingNewsElement.thePublicationDateField.check(matches(isDisplayed()));
+        Allure.step("Нажатие на поле Publication date");
+        creatingNewsElement.thePublicationDateField.perform(click());
+        Allure.step("Проверка видимости кнопки ОК");
+        creatingNewsElement.theOkButton.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку ОК");
+        creatingNewsElement.theOkButton.perform(click());
+        Allure.step("Проверка видимости поля Time");
+        creatingNewsElement.timeField.check(matches(isDisplayed()));
+        Allure.step("Нажатие на поле Time");
+        creatingNewsElement.timeField.perform(click());
+        Allure.step("Проверка видимости кнопки ОК");
+        creatingNewsElement.theOkButton.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку ОК");
+        creatingNewsElement.theOkButton.perform(click());
+        Allure.step("Проверка видимости поля Description");
+        creatingNewsElement.descriptionField.check(matches(isDisplayed()));
+        Allure.step("Нажатие на поле Description");
+        creatingNewsElement.descriptionField.perform(click());
+        Allure.step("Заполнение поля Description");
+        creatingNewsElement.descriptionField.perform(replaceText(Data.descriptionOfTheNews()), closeSoftKeyboard());
+        Allure.step("Проверка видимости кнопки SAVE");
+        creatingNewsElement.theSaveButton.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку SAVE");
+        creatingNewsElement.theSaveButton.perform(click());
+
+        Allure.step("Проверка видимости кнопки, разворачивающей новость в разделе Control panel");
+        controlPanelElement.aButtonInTheFormOfACheckMark.check(matches(isDisplayed()));
+        Allure.step("Нажатие на  кнопку, разворачивающую новость в разделе Control panel");
+        controlPanelElement.aButtonInTheFormOfACheckMark.perform(actionOnItemAtPosition(0, click()));
+
+        // Делаю проверку видимости и полноты содерждания созданной новости;
+        Allure.step("Проверка видимости содержания новости");
+        controlPanelElement.descriptionOfTheNews.check(matches(isDisplayed()));
+        Allure.step("Проверка правильного написания  содержания новости");
+        controlPanelElement.descriptionOfTheNews.check(matches(withText(Data.descriptionOfTheNews())));
+
+        // Очистка мобильного приложение (удаление тестовых данных);
+        Allure.step("Проверка видимости кнопки Navicon");
+        appBarElement.buttonNavicon.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку Navicon");
+        appBarElement.buttonNavicon.perform(click());
+        Allure.step("Проверка видимости кнопки News");
+        newsElement.theNewsSection.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку News");
+        newsElement.theNewsSection.perform(click());
+        Allure.step("Проверка видимости кнопки с id: edit_news_material_button");
+        newsElement.aPencilShapedButton.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку с id: edit_news_material_button");
+        newsElement.aPencilShapedButton.perform(click());
+        Allure.step("Проверка видимости кнопки с id: delete_news_item_image_view");
+        controlPanelElement.deleteANewsItem.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку с id: delete_news_item_image_view");
+        controlPanelElement.deleteANewsItem.perform(click());
+        Allure.step("Проверка видимости кнопки ОК");
+        controlPanelElement.theOkButton.check(matches(isDisplayed()));
+        Allure.step("Нажатие на кнопку ОК");
+        controlPanelElement.theOkButton.perform(click());
     }
 
 

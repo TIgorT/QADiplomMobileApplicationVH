@@ -467,4 +467,15 @@ public class CreatingNewsTest {
         creatingNewsStep.enterAnySetOfNumericCharactersInTheDescriptionFieldCreatingNews();
     }
 
+    // Доработка - тест создания новости;
+
+    @Epic(value = "Раздел Creating News")
+    @Feature(value = "Создание новости")
+    @Test
+    @DisplayName("Создание новости end - to -end тест")
+    @Description(value = "Создание новости end - to -end тест")
+    public void creatingANewsEndToEndTest() {
+        creatingNewsStep.creatingANewsItem();
+    }
+
 }
